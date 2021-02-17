@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
         var contains = images.where((element) => element.id == imageModel.id);
         if (contains.isEmpty) {
           setState(() {
-            images.add(imageModel);
+            images.insert(0, imageModel);
             print("ADDED ONE = $counter: $offset");
           });
         } else {
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
   void removeImage() async {
     if (counter > 0 && offset > 0) {
       setState(() {
-        images.removeLast();
+        images.removeAt(0);
       });
       if ((counter - images.length) >= 1) {
         var diff = counter - images.length;
