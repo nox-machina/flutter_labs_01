@@ -13,8 +13,17 @@ class ImageList extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.all(20.0),
-                child: Image(image: NetworkImage(images[index].url)),
-              )
+                child: Image(
+                  image: NetworkImage(images[index].url),
+                  errorBuilder: (BuildContext context, Object exception,
+                      StackTrace stackTrace) {
+                    return Image(
+                        image: NetworkImage(
+                            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"));
+                  },
+                ),
+              ),
+              Text('${images[index].name}'),
             ],
           );
         });

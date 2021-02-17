@@ -1,13 +1,16 @@
 class ImageModel {
   int id;
-  String title;
+  String name;
   String url;
 
-  ImageModel(this.id, this.title, this.url);
-
+  // ImageModel(this.id, this.name);
   ImageModel.fromJson(Map<String, dynamic> parsedJson) {
-    id = parsedJson['id'];
-    title = parsedJson['title'];
-    url = parsedJson['url'];
+    // print(parsedJson['data']['results'][0]['thumbnail']['path']);
+    // if (parsedJson['data']['results'][0]['thumbnail']['path'] !=
+    //     "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available") {
+    id = parsedJson['data']['results'][0]['id'];
+    name = parsedJson['data']['results'][0]['name'];
+    url = parsedJson['data']['results'][0]['thumbnail']['path'] + ".jpg";
+    // }
   }
 }
