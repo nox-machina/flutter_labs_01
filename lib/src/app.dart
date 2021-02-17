@@ -51,17 +51,18 @@ class _MyAppState extends State<MyApp> {
   void removeImage() async {
     if (counter > 0 && offset > 0) {
       setState(() {
+        //removes last added element from index 0
         images.removeAt(0);
       });
+      //if elements have been skipped, calculate the difference by comparing the counter and number of elements in list and adjust both offset and counter
       if ((counter - images.length) >= 1) {
         var diff = counter - images.length;
         offset -= (diff);
         counter -= (diff);
-        print("REMOVED more = $counter: $offset");
+        //otherwise decrement offset and counter by 1
       } else {
         offset--;
         counter--;
-        print("REMOVED ONE = $counter: $offset");
       }
     }
   }
